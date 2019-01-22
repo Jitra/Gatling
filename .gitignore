@@ -1,0 +1,4 @@
+.DS_Store
+reports/
+.idea
+docker/gatling/web/site/*

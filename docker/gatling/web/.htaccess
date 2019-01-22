@@ -1,0 +1,6 @@
+RewriteEngine on
+# Rewrite web root to the folder named site without change in url
+# [L] Preserves url to still be domain.com instead of domain.com/site
+RewriteCond %{REQUEST_URI} !^/site/
+RewriteRule ^(.*)$ /site/$1 [L]
+

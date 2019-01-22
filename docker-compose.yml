@@ -1,0 +1,25 @@
+version: '3'
+services:
+  gatling:
+    build:
+      context: ./docker/gatling
+      args:
+        - GATLING_RESULTS
+        - GATLING_RESULTS_NEWEST
+        - GATLING_VERSION
+    volumes:
+      - "./docker/gatling/web:${GATLING_RESULTS_NEWEST}"
+#      - ./conf:/opt/gatling/conf
+      - ./docker/gatling/user-files/simulations/BasicSimulation.scala:/opt/gatling/user-files/simulations/BasicSimulation.scala
+    environment:
+      - GATLING_RESULTS
+      - GATLING_RESULTS_NEWEST
+      - GATLING_VERSION
+
+  web:
+    build:
+      context: ./docker/web
+    volumes:
+      - ./docker/gatling/web:/usr/local/apache2/htdocs
+    ports:
+      - 8081:80
