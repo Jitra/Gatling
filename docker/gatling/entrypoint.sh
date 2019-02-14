@@ -1,10 +1,5 @@
 #!/bin/bash
 
-echo "Gatling $GATLING_VERSION"
-echo "Test on a default script"
-
-/usr/local/bin/run
-
 cleanup ()
 {
   kill -s SIGTERM $!

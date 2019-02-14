@@ -7,10 +7,11 @@ services:
         - GATLING_RESULTS
         - GATLING_RESULTS_NEWEST
         - GATLING_VERSION
+    network_mode: host
     volumes:
       - "./docker/gatling/web:${GATLING_RESULTS_NEWEST}"
 #      - ./conf:/opt/gatling/conf
-      - ./docker/gatling/user-files/simulations/BasicSimulation.scala:/opt/gatling/user-files/simulations/BasicSimulation.scala
+      - ./docker/gatling/user-files/simulations:/opt/gatling/user-files/simulations
     environment:
       - GATLING_RESULTS
       - GATLING_RESULTS_NEWEST
